@@ -8,11 +8,6 @@ class Character:
         self.engine = pyttsx3.init()
         self.recognizer = sr.Recognizer()
         self.engine.setProperty('rate', 130)
-        self.root = tk.Tk()
-        self.text_box = None
-        self.text_box_input = None
-        self.done_button = None
-        self.youtube_download_path = "/home/saahil/Videos"
 
 
 class Interact(Character):
@@ -30,19 +25,7 @@ class Interact(Character):
                 temp_text = self.recognizer.recognize_google(audio)
                 return temp_text
             except ...:
-                self.speak("Sorry I couldn't get what you said")
-
-    def set_textbox_input(self):
-        self.text_box_input = self.text_box.get("1.0", 'end-1c')
-        self.root.destroy()
-
-    def get_textbox_input(self, title):
-        self.root.title(title)
-        self.text_box = tk.Text(self.root, height=1, width=40)
-        self.done_button = tk.Button(self.root, text="Done", command=self.set_textbox_input)
-        self.text_box.pack()
-        self.done_button.pack()
-        tk.mainloop()
+                pass
 
 
 if __name__ == "__main__":
