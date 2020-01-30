@@ -15,6 +15,7 @@ class OpenApp(Assistant.Interact):
             "vscode": "code",
             "vs code": "code",
             "visual studio code": "code",
+            "code": "code",
             "chromium": "chromium-browser",
             "geany": "geany",
             "android studio": "/home/saahil/android-studio/bin/studio.sh"
@@ -24,6 +25,7 @@ class OpenApp(Assistant.Interact):
     def open(self):
         try:
             subprocess.call(self.app_dictionary[self.user_input])
+            self.speak("Application started.")
         except:
             self.speak("Sorry, the application is not installed")
 
@@ -38,12 +40,14 @@ class SystemControl(Assistant.Interact):
         try:
             assert 0 <= self.volume_value <= 100
             self.audio_mixer.setvolume(self.volume_value)
+            self.speak("Volume changed.")
         except:
             self.speak("Please install alsa audio to enable this command")
 
     def mute_audio(self):
         try:
             self.audio_mixer.setvolume(0)
+            self.speak("Audio muted.")
         except:
             self.speak("Please install alsa audio to enable this command")
 
@@ -122,6 +126,7 @@ class CreateProject(Assistant.Interact):
             os.system('git config --global user.email "saahilmahato72@gmail.com"')
             os.system(f'git remote add origin {self.remote_url_text_box_input}')
             for file in self.project_files_name_text_box_input.split(","): os.system(f"touch {file}")
+            self.speak("Project Created.")
         except AssertionError:
             self.speak("Sorry, invalid git URL or project name")
         except:
