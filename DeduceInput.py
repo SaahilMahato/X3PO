@@ -2,7 +2,7 @@ import Tasks
 import Assistant
 
 
-class DeduceInput(Assistant.Interact):
+class DeduceInput:
     def __init__(self, user_input):
         super().__init__()
         self.user_input = user_input
@@ -21,4 +21,4 @@ class DeduceInput(Assistant.Interact):
         elif "create project" in self.user_input:
             Tasks.CreateProject().create_project()
         else:
-            self.speak("Sorry, I could not understand you.")
+            Assistant.Interact().speak("Sorry, I could not understand you.")
