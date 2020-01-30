@@ -1,6 +1,5 @@
 import pyttsx3
 import speech_recognition as sr
-import tkinter as tk
 
 
 class Character:
@@ -24,9 +23,5 @@ class Interact(Character):
             try:
                 temp_text = self.recognizer.recognize_google(audio)
                 return temp_text
-            except ...:
+            except:
                 pass
-
-
-if __name__ == "__main__":
-    pass
