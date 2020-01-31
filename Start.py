@@ -3,14 +3,13 @@ import DeduceInput
 
 if __name__ == '__main__':
     trigger_word = "hello"
+    x3po = Assistant.Interact()
     while True:
-        user_input_trigger = Assistant.Interact().listen()
+        user_input_trigger = x3po.listen()
         if user_input_trigger == "hello":
-            Assistant.Interact().speak("Hi, How can I help you?")
-            user_query = Assistant.Interact().listen()
+            x3po.speak("Hi, How can I help you?")
+            user_query = x3po.listen()
             if user_query is not None:
                 DeduceInput.DeduceInput(user_query).deduce()
             else:
-                Assistant.Interact().speak("Sorry, I could not get you.")
-        else:
-            continue
+                x3po.speak("Sorry, I could not get you.")
