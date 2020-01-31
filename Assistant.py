@@ -2,26 +2,25 @@ import pyttsx3
 import speech_recognition as sr
 
 
-class Character:
+class Interact:
     def __init__(self):
         self.engine = pyttsx3.init()
-        self.recognizer = sr.Recognizer()
         self.engine.setProperty('rate', 130)
-
-
-class Interact(Character):
-    def __init__(self):
-        super().__init__()
+        self.audio = None
+        self.temp_text = None
+        self.recognizer = sr.Recognizer()
+        self.microphone = sr.Microphone()
 
     def speak(self, text):
         self.engine.say(text)
         self.engine.runAndWait()
 
     def listen(self):
-        with sr.Microphone() as source:
-            audio = self.recognizer.listen(source)
+        with self.microphone as source:
+            self.recognizer.adjust_for_ambient_noise(source)
+            self.audio = self.recognizer.listen(source)
             try:
-                temp_text = self.recognizer.recognize_google(audio)
-                return temp_text
+                self.temp_text = self.recognizer.recognize_google(self.audio)
+                return self.temp_text
             except:
                 pass
