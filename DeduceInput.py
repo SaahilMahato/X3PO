@@ -10,15 +10,17 @@ class DeduceInput:
     def deduce(self):
         if "open" in self.user_input:
             app = self.user_input[5:]
-            Tasks.OpenApp(app).open()
+            Tasks.OpenApp.OpenApp(app).open()
         elif "volume" in self.user_input:
             volume_value = int(self.user_input[-3:])
-            Tasks.SystemControl(volume_value).change_volume()
+            Tasks.SystemControl.SystemControl(volume_value).change_volume()
         elif "mute" in self.user_input:
-            Tasks.SystemControl().mute_audio()
+            Tasks.SystemControl.SystemControl().mute_audio()
         elif "download video" in self.user_input:
-            Tasks.VideoDownload().download_video()
+            Tasks.YouTubeDownloader.VideoDownload().download_video()
         elif "create project" in self.user_input:
-            Tasks.CreateProject().create_project()
+            Tasks.CreateProject.CreateProject().create_project()
+        elif "shut down" in self.user_input:
+            quit()
         else:
             Assistant.Interact().speak("Sorry, I could not understand you.")
