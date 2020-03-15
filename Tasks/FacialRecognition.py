@@ -7,11 +7,10 @@ import Assistant
 class FacialRecognition(Assistant.Interact):
     def __init__(self):
         super().__init__()
-        self.KNOWN_FACES_DIR = "../data/known_faces"
-        self.UNKNOWN_FACES_DIR = "data/unknown_faces"
+        self.KNOWN_FACES_DIR = "../X3PO/data/known_faces"
         self.encodings = []
         self.names = []
-        self.name = "I don't recognize you"
+        self.name = ""
         self.FRAME_THICKNESS = 3
         self.FONT_THICKNESS = 1
         self.encode_images()
@@ -33,7 +32,7 @@ class FacialRecognition(Assistant.Interact):
             unknown_location = face_recognition.face_locations(unknown_image)
             unknown_encoding = face_recognition.face_encodings(unknown_image, unknown_location)
             for face_location, encoding in zip(unknown_location, unknown_encoding):
-                matches = face_recognition.compare_faces(self.encodings, encoding)
+                matches = face_recognition.compare_faces(self.encodings, encoding, 0.5)
                 if True in matches:
                     first_match_index = matches.index(True)
                     self.name = self.names[first_match_index]
@@ -42,4 +41,7 @@ class FacialRecognition(Assistant.Interact):
             if self.name in self.names:
                 self.speak(f"Hello {self.name}")
                 break
+            else:
+                continue
+
         return self.name
