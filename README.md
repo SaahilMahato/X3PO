@@ -10,28 +10,29 @@ and operates according to my preferences. If you want to clone this repository
 create your own assistant with X3PO as a base or modify it according to your preferences
 feel free to do so as this is a public repository with MIT license.
 
-#How to run?
+# How to run?
 
 Make sure you install all the dependencies and run the start.py script.
-
-
 #Dependencies:
 - pyttsx3 python module
 - Speech Recognition python module
 - alsaaudio
 - TKinter python module
 - pytube python module
+- facerecognition python module
 
 
-#Current features of X3PO:
+# Current features of X3PO:
 - Open applications
 - Change volume
 - Download YouTube Videos (may not work based on whether the pyTube module is updated to the changes on YouTube)
 - Start a project with git initialization, files and remote added.
+- Face recognition as trigger
 
-#Features upcoming on next version of X3PO:
+
+# Features upcoming on next version of X3PO:
 - Documentation of the code
 - Look up the weather
 - Open popular websites
 - Search the web via google
-- Face recognition as trigger
+- Setup guide for face recognition
